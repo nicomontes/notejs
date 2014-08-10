@@ -1,0 +1,24 @@
+<div class="container">
+  <div id="list" class="four columns clearfix">
+    <dl>
+    <% _.each(noteList, function (note) { %>
+      <li class="button" onclick="displayContent(this.id)" id=<%=note.id%>><%= note.title %></li><br/>
+    <% }) %>
+    </dl>
+  </div>
+    <div id="editor">
+      <textarea id="content" class="six columns clearfix" v-model="input"></textarea>
+      <div id="htmlContent" class="six columns clearfix" v-html="input | marked"></div>
+    </div>
+</div>
+
+<div class="create">
+  <div id="list" class="four columns clearfix">
+    <a class="button" data-featherlight="/note/create">Create</a>
+  </div>
+  <div id="list" class="six columns clearfix">
+    <button id="deleteButton" onclick="deleteNote()">Delete</button>
+    <button id="shareButton" onclick="shareNote()">Share</button>
+    <button id="saveButton" onclick="saveContent(true)">Save</button>
+  </div>
+</div>
